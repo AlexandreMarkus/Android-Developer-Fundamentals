@@ -13,10 +13,10 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val LOG_TAG = MainActivity::class.java.simpleName
+        val tag = MainActivity::class.java.simpleName
 
         button_main.setOnClickListener {
-            Log.d(LOG_TAG, "Button clicked!")
+            Log.d(tag, "Button clicked!")
             val intent = Intent(this, SecondActivity::class.java)
             startActivity(intent)
         }
