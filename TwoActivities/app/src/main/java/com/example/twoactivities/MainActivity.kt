@@ -26,7 +26,7 @@ class MainActivity : AppCompatActivity() {
 
     }
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data);
+        super.onActivityResult(requestCode, resultCode, data)
         // Check which request we're responding to
         if (requestCode == 1) {
             // Make sure the request was successful
