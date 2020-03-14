@@ -1,13 +1,15 @@
 package com.example.droidcafe
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.google.android.material.snackbar.Snackbar
+import androidx.navigation.Navigation
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.fragment_first.*
+
 
 
 class MainActivity : AppCompatActivity() {
@@ -16,12 +18,15 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         setSupportActionBar(toolbar)
+    }
 
-        fab.setOnClickListener { view ->
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                    .setAction("Action", null).show()
-        }
-
+    override fun onStart() {
+        super.onStart()
+            val navController = findNavController(R.id.nav_host_fragment)
+            Navigation.setViewNavController(fab, navController)
+            fab.setOnClickListener {
+                navController.navigate(R.id.SecondFragment)
+            }
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
