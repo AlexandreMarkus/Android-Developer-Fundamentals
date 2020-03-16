@@ -106,4 +106,44 @@
         app:layout_constraintStart_toEndOf="@+id/note_textview"
         android:autofillHints="@string/enter_note_hint" />
 
+
+    <TextView
+        android:id="@+id/delivery_textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/delivery_label_text"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/note_edittext" />
+
+    <RadioGroup
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:checkedButton="@id/sameday_radioButton"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/delivery_textView">
+
+        <RadioButton
+            android:id="@+id/sameday_radioButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/same_day_radiotext" />
+
+        <RadioButton
+            android:id="@+id/nextday_radioButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/next_day_radiotext" />
+
+        <RadioButton
+            android:id="@+id/pickup_radioButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/pick_up_radiotext" />
+    </RadioGroup>
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
