@@ -1,10 +1,13 @@
 package com.example.droidcafeinput
 
 import android.os.Bundle
+import android.view.View
+import android.widget.AdapterView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.android.droidcafe.R
 import kotlinx.android.synthetic.main.activity_order.*
+
 
 /**
  * This activity shows the order chosen.  The order is sent as data
@@ -29,6 +32,19 @@ class OrderActivity : AppCompatActivity() {
 
         pickup_radioButton.setOnClickListener {
             displayToast(getString(R.string.pick_up_radiotext))
+        }
+
+        if (spinner != null) {
+            spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+                override fun onItemSelected(parent: AdapterView<*>,
+                                            view: View, position: Int, id: Long) {
+                    displayToast(spinner.selectedItem.toString())
+                }
+
+                override fun onNothingSelected(parent: AdapterView<*>) {
+                    // write code to perform some action
+                }
+            }
         }
     }
 

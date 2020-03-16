@@ -84,6 +84,16 @@
         app:layout_constraintStart_toEndOf="@+id/phone_textview"
         android:autofillHints="@string/enter_phone_hint" />
 
+    <Spinner
+        android:id="@+id/spinner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:entries="@array/labels_array"
+        app:layout_constraintBottom_toBottomOf="@+id/phone_edittext"
+        app:layout_constraintStart_toEndOf="@+id/phone_edittext"
+        app:layout_constraintTop_toTopOf="@+id/phone_edittext" />
+
     <TextView
         android:id="@+id/note_textview"
         android:layout_width="wrap_content"
