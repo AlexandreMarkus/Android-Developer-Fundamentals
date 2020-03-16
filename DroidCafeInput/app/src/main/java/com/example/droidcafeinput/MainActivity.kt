@@ -3,6 +3,7 @@ package com.example.droidcafeinput
 
 import android.content.Intent
 import android.os.Bundle
+import android.provider.AlarmClock.EXTRA_MESSAGE
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
@@ -10,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.android.droidcafe.R
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.content_main.*
+
 
 /**
  * This app demonstrates images used as buttons and a floating action button
@@ -74,13 +76,33 @@ class MainActivity : AppCompatActivity() {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
-        val id = item.itemId
 
         // This comment suppresses the Android Studio warning about simplifying
         // the return statements.
-        return if (id == R.id.order_settings) {
-            true
-        } else super.onOptionsItemSelected(item)
+        when (item.itemId) {
+            R.id.action_order -> {
+                displayToast(getString(R.string.action_order_message))
+                val intent = Intent(this@MainActivity, OrderActivity::class.java)
+                intent.putExtra("EXTRA_MESSAGE", mOrderMessage)
+                startActivity(intent)
+                return true
+            }
+            R.id.action_status -> {
+                displayToast(getString(R.string.action_status_message))
+                return true
+            }
+            R.id.action_favorites -> {
+                displayToast(getString(R.string.action_favorites_message))
+                return true
+            }
+            R.id.action_contact -> {
+                displayToast(getString(R.string.action_contact_message))
+                return true
+            }
+            else ->{
+                return super.onOptionsItemSelected(item)
+            }
+        }
     }
 
     /**
@@ -94,5 +116,4 @@ class MainActivity : AppCompatActivity() {
             Toast.LENGTH_SHORT
         ).show()
     }
-
 }

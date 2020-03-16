@@ -26,6 +26,10 @@
     <string name="order_settings">Order</string>
     <string name="status_settings">Status</string>
     <string name="favorites_settings">Favorites</string>
+    <string name="action_order_message">You selected Order.</string>
+    <string name="action_status_message">You selected Status.</string>
+    <string name="action_favorites_message">You selected Favorites.</string>
+    <string name="action_contact_message">You selected Contact.</string>
     <string-array name="labels_array">
         <item>Home</item>
         <item>Work</item>
