@@ -6,6 +6,11 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name="com.example.droidcafeinput.OrderActivity"/>
+        <activity android:name="com.example.droidcafeinput.OrderActivity"
+            android:label="Order Activity"
+            android:parentActivityName="com.example.droidcafeinput.MainActivity">
+            <meta-data android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.droidcafeinput.MainActivity"/>
+        </activity>
     </application>
 </manifest>
