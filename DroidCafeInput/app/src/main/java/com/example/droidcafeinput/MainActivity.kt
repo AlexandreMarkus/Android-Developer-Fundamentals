@@ -78,7 +78,7 @@ class MainActivity : AppCompatActivity() {
 
         // This comment suppresses the Android Studio warning about simplifying
         // the return statements.
-        return if (id == R.id.action_settings) {
+        return if (id == R.id.order_settings) {
             true
         } else super.onOptionsItemSelected(item)
     }
