@@ -1,6 +1,7 @@
 package com.example.materialme_starter
 
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -80,5 +81,9 @@ class MainActivity : AppCompatActivity() {
         sportsImageResources.recycle()
         // Notify the adapter of the change.
         recyclerView!!.adapter?.notifyDataSetChanged()
+    }
+
+    fun resetSports(view: View) {
+        initializeData()
     }
 }
