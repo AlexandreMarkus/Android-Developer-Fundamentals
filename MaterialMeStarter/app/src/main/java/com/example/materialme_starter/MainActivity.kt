@@ -2,7 +2,9 @@ package com.example.materialme_starter
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.activity_main.*
 import java.util.*
 
@@ -32,6 +34,30 @@ class MainActivity : AppCompatActivity() {
 
         // Get the data.
         initializeData()
+
+        val helper = ItemTouchHelper(object : ItemTouchHelper.SimpleCallback(ItemTouchHelper.LEFT or ItemTouchHelper.RIGHT or ItemTouchHelper.DOWN or ItemTouchHelper.UP, ItemTouchHelper.LEFT or ItemTouchHelper.RIGHT) {
+            override fun onMove(
+                recyclerView: RecyclerView,
+                viewHolder: RecyclerView.ViewHolder,
+                target: RecyclerView.ViewHolder
+            ): Boolean {
+                val from = viewHolder.adapterPosition
+                val to = target.adapterPosition
+                Collections.swap(mSportsData, from, to)
+                mAdapter!!.notifyItemMoved(from, to)
+                return true
+            }
+
+            override fun onSwiped(
+                viewHolder: RecyclerView.ViewHolder,
+                direction: Int
+            ) {
+                mSportsData!!.removeAt(viewHolder.adapterPosition)
+                mAdapter!!.notifyItemRemoved(viewHolder.adapterPosition)
+            }
+        })
+
+        helper.attachToRecyclerView(recyclerView)
     }
 
     /**
@@ -51,7 +77,7 @@ class MainActivity : AppCompatActivity() {
             mSportsData!!.add(Sport(sportsList[i], sportsInfo[i], sportsImageResources.getResourceId(i,0)))
         }
 
-        sportsImageResources.recycle();
+        sportsImageResources.recycle()
         // Notify the adapter of the change.
         recyclerView!!.adapter?.notifyDataSetChanged()
     }
