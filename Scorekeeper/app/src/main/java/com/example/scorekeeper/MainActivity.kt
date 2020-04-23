@@ -18,8 +18,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         if (savedInstanceState != null) {
-            mScore1 = savedInstanceState.getInt(STATE_SCORE_1);
-            mScore2 = savedInstanceState.getInt(STATE_SCORE_2);
+            mScore1 = savedInstanceState.getInt(STATE_SCORE_1)
+            mScore2 = savedInstanceState.getInt(STATE_SCORE_2)
 
             //Set the score text views
             score_1.text = mScore1.toString()
@@ -81,7 +81,7 @@ class MainActivity : AppCompatActivity() {
 
         }
 // Recreate the activity for the theme change to take effect.
-            recreate();
+            recreate()
             return true
     }
 
