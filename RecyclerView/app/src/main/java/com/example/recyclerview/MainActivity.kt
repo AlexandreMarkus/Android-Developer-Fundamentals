@@ -6,7 +6,6 @@ import android.view.MenuItem
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.content_main.*
 import java.util.*
@@ -30,15 +29,18 @@ class MainActivity : AppCompatActivity() {
 // Create an adapter and supply the data to be displayed.
         mAdapter = WordListAdapter(this, mWordList)
 // Connect the adapter with the RecyclerView.
-// Connect the adapter with the RecyclerView.
         recycler_view.adapter = mAdapter
-// Give the RecyclerView a default layout manager.
 // Give the RecyclerView a default layout manager.
         recycler_view.layoutManager = LinearLayoutManager(this)
 
-        fab.setOnClickListener { view ->
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                    .setAction("Action", null).show()
+        fab.setOnClickListener {
+            val wordListSize = mWordList.size
+            // Add a new word to the wordList.
+            mWordList.addLast("+ Word $wordListSize")
+            // Notify the adapter, that the data has changed.
+            recycler_view.adapter?.notifyItemInserted(wordListSize)
+            // Scroll to the bottom.
+            recycler_view.smoothScrollToPosition(wordListSize)
         }
     }
 
